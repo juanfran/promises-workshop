@@ -67,7 +67,13 @@ step1(function (value1) {
 
                 <section>
                     <pre><code data-trim contenteditable>
-                            then(success, reject, progress)
+then(success, reject, progress)
+
+doSomething()
+.then(doOtherThing)
+.then(null, console.log); // si falla la primera o la segunda promesa
+
+
                     </code></pre>
                     <ul>
                         <li>Cuando la promesa se resulve se llama al parámetro success</li>
@@ -81,10 +87,10 @@ step1(function (value1) {
                 </section>
 
                 <section>
-                    <h3>Ejercicios (4, 5, 6)</h3>
+                    <h3>Ejercicios (4, 5, 6, 7)</h3>
                     <p>Uso de las promesas</p>
 
-                    <p>En Q si cuando resulves una promesa devuelves algo que no sea una promesa lo convierte</p>
+                    <p>Puedes devolver un valor o una promesa, si devolvemos un valor Q lo convierte a promesa</p>
                     <pre><code data-trim contenteditable>
 .then(function () {
     return 3;

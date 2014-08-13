@@ -43,11 +43,64 @@ describe("testing workshop", function () {
     }, 50);
   });
 
-  it.skip("test5", function () {
-    sinon.spy(log, "msg");
+  it.skip("test5", sinon.test(function () {
+    this.spy(log, "msg");
 
     var result = test5();
 
     return expect(result).to.become("send: User id 3");
+  }));
+
+  it.skip("test6", function (done) {
+    var stub = sinon.stub(api, "verify");
+    stub.returns(false);
+
+    var result = test6();
+
+    result.fail(function (value) {
+      expect(value).to.be.equal("fail");
+      stub.restore();
+
+      done();
+    });
   });
+
+  it.skip("test6 b", function (done) {
+    var stub = sinon.stub(api, "verify");
+    stub.returns(true);
+
+    var result = test6();
+
+    result.then(function (value) {
+      expect(value).to.be.equal("ok");
+      stub.restore();
+
+      done();
+    });
+  });
+
+  it.skip("test7", function (done) {
+    var spy = sinon.spy(log, "msg");
+
+    var result = test7(1);
+
+    result.done(function () {
+      expect(spy.calledWith("ok")).to.be.true;
+      spy.restore();
+      done();
+    });
+  });
+
+  it.skip("test7 b", function (done) {
+    var spy = sinon.spy(log, "msg");
+
+    var result = test7(2);
+
+    result.done(function () {
+      expect(spy.calledWith("fail")).to.be.true;
+      spy.restore();
+      done();
+    });
+  });
+
 });

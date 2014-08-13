@@ -13,5 +13,17 @@ var api = {
   },
   send: function (text) {
     return "send: " + text;
+  },
+  verify: function (text) {},
+  userExist: function (id) {
+    var deferred = Q.defer();
+
+    if (id == 1) {
+      deferred.resolve("ok");
+    } else {
+      deferred.reject("fail");
+    }
+
+    return deferred.promise;
   }
 };
