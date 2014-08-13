@@ -1,0 +1,13 @@
+{
+  "name": "promises-workshop",
+  "version": "0.0.0",
+  "homepage": "https://github.com/juanfran/promises-workshop",
+  "authors": [
+    "Juanfran <juanfran.ag@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "q": "~1.0.1"
+  }
+}
