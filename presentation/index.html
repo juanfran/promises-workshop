@@ -55,7 +55,15 @@ step1(function (value1) {
 });
 
                     </code></pre>
-                    </section>
+                </section>
+                <section>
+                    <pre><code data-trim contenteditable>
+step1
+.then(step2)
+.then(step3)
+.then(step4);
+                    </code></pre>
+                </section>
                 <section>
                     <h2>¿Qué es una promesa?</h2>
                     <ul>
@@ -96,6 +104,105 @@ doSomething()
     return 3;
 })
                     </code></pre>
+                </section>
+                <section>
+<h3>¿Qué pasa si falla `doSomething`?</h3>
+<h3>¿Qué pasa si falla `doOtherThing`?</h3>
+<h3>¿Y si falla la función que maneja el error?</h3>
+<pre><code data-trim contenteditable>
+doSomething()
+.then(doOtherThing, function() {
+    console.log("error");
+});
+</code></pre>
+                </section>
+                <section>
+<pre><code data-trim contenteditable>
+doSomething()
+.then(doOtherThing, function() {
+    console.log("error");
+})
+.done();
+</code></pre>
+                </section>
+                <section>
+                    <h3>Convertir funciones sincronas en asincronas</h3>
+<pre><code data-trim contenteditable>
+Q.fcall(function() {
+    return 2;
+})
+.then(doOtherThing)
+.then(doOtherThing)
+.then(doOtherThing)
+.done();
+</code></pre>
+
+                </section>
+                <section>
+                    <h3>Esperar a que se completen varias promesas</h3>
+<pre><code data-trim contenteditable>
+Q.all([promesa1, promesa2])
+.then(function (result) {
+    console.log(result[0]); //resultado promesa1
+    console.log(result[1]); //resultado promesa2
+})
+</code></pre>
+
+                </section>
+                <section>
+<pre><code data-trim contenteditable>
+Q.all([promesa1, promesa2])
+.spread(function (result1, result1) {
+
+})
+</code></pre>
+
+                </section>
+                <section>
+<pre><code data-trim contenteditable>
+return getUsername()
+.then(function (username) {
+    return [username, getUser(username)];
+})
+.spread(function (username, user) {
+
+});
+</code></pre>
+
+                </section>
+                <section>
+<pre><code data-trim contenteditable>
+function authenticate() {
+    return getUsername()
+    .then(function (username) {
+        return getUser(username);
+    })
+    .then(function (user) {
+        return getPassword()
+        .then(function (password) {
+            if (user.passwordHash !== hash(password)) {
+                throw new Error("Can't authenticate");
+            }
+        });
+    });
+}
+</code></pre>
+</section>
+<section>
+    <ul>
+        <li>promise.thenResolve(value)</li>
+        <li>promise.thenReject(reason)</li>
+        <li>promise.timeout(ms, message)</li>
+        <li>promise.get(propertyName)</li>
+        <li>promise.post(methodName, args)</li>
+        <li>promise.delay(ms)</li>
+        <li>promise.isPending()</li>
+        <li>etc</li>
+    </ul>
+</section>
+                <section>
+                    <h3>Ejercicios (8, 9)</h3>
+                    <p>Bonus</p>
                 </section>
             </div>
 

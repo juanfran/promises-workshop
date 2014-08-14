@@ -71,3 +71,44 @@ var test7 = function (id) {
       log.msg("fail");
     });
 };
+
+var test8 = function () {
+  return api.getCurrentUser()
+    .get("id")
+    .then(function (id) {
+      return [api.isValidUser(id), id]
+    })
+    .spread(function (valid, id) {
+      if (!valid) {
+        throw new Error("error");
+      } else {
+        return Q.all([api.getUserFriends(id), api.getUserArticles(id)])
+      }
+    })
+    .spread(function (friends, articles) {
+      util.printUsers(friends);
+      util.printArticles(articles);
+    })
+    .fail(function () {
+      log.msg("error")
+    });
+};
+
+var test9 = function () {
+  return Q.fcall(util.random)
+    .then(function (num) {
+      return Q.all([api.server1(num),
+                    api.server2(num)]);
+    })
+    .spread(function (server1, server2) {
+      if (server1 && server2) {
+        return [server1, server2];
+      } else {
+        throw new Error("error");
+      }
+    })
+    .fail(function (msg) {
+      log.msg('error');
+    })
+    .then(api.backup);
+};
