@@ -15,10 +15,10 @@ var test2 = function () {};
 
 
 // - retornar un promesa
-// - lanzar una excepción, a los pocos milisegundo
+// - resolver una promesa, a los pocos milisegundo
 
 // setTimeout
-// deferred.notify
+// deferred.notify 50
 var test3 = function () {};
 
 
@@ -50,8 +50,7 @@ var test6 = function () {};
 
 var test7 = function (id) {};
 
-// - llamar a oldApi.getCurrentUser() que nos devuelve un json {id: 2, name: "user1"}
-// - oldApi es antiguo y funciona con callback y hay que adaptarlo (oldApi.getCurrentUser(callback))
+// - llamar a api.getCurrentUser() que nos devuelve un json {id: 2, name: "user1"}
 // - coger id y mandarselo a api.isValidUser
 // - si devulve true continuar
 // - si devuelve false fallar con throw new Error("error"); capturarlo y log.msg("error")
