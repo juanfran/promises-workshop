@@ -54,9 +54,9 @@ var test7 = function (id) {};
 // - coger id y mandarselo a api.isValidUser
 // - si devulve true continuar
 // - si devuelve false fallar con throw new Error("error"); capturarlo y log.msg("error")
-// - llamar a api.getCurrentUserFriends y api.getCurrentUserArticles al mismo tiempo
-// - con los resultado de getCurrentUserFriends llamar a util.printUsers
-// - con los resultado de getCurrentUserArticles llamar a util.printArticles
+// - llamar a api.getUserFriends y api.getUserArticles al mismo tiempo con el id del usuario
+// - con los resultado de getUserFriends llamar a util.printUsers
+// - con los resultado de getArticles llamar a util.printArticles
 
 var test8 = function () {};
 
